@@ -457,11 +457,62 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+/* Botón hamburguesa móvil (oculto en computadoras) */
+    .menu-toggle-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-size: 1.4rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    /* Adaptación específica para Smartphones */
     @media (max-width: 768px) {
-      .nav-container { flex-direction: column; align-items: flex-start; }
-      nav ul { flex-direction: column; width: 100%; gap: 0.25rem; }
-      nav a { display: block; width: 100%; }
-      .card { padding: 1.25rem; }
+      .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.6rem 1rem;
+      }
+      .brand-title {
+        font-size: 0.85rem;
+        max-width: calc(100% - 55px);
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+      .brand-name {
+        line-height: 1.2;
+      }
+      .menu-toggle-btn {
+        display: block; /* Muestra el botón ☰ en móvil */
+      }
+      nav#mainNav {
+        display: none; /* Oculta la lista larga por defecto */
+        width: 100%;
+        margin-top: 0.5rem;
+        border-top: 1px solid var(--border-subtle);
+        padding-top: 0.5rem;
+      }
+      nav#mainNav.menu-active {
+        display: block; /* Solo se muestra al tocar ☰ */
+      }
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.25rem;
+      }
+      nav a {
+        display: block;
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        background-color: var(--bg-surface-elevated);
+      }
+      .card {
+        padding: 1.25rem;
+      }
     }
   </style>
 </head>
@@ -470,23 +521,25 @@
   <!-- ==========================================================================
        BARRA DE NAVEGACIÓN PRINCIPAL
        ========================================================================== -->
-  <header>
+<header>
     <div class="nav-container">
       <div class="brand-title">
-        <span>Universidad del Golfo de México Norte</span>
-        <span>Psicología Organizacional</span>
+        <span class="brand-name">UGM Norte | Psicología Organizacional</span>
         <span class="brand-badge">Posgrado</span>
       </div>
-      <nav>
+      <button class="menu-toggle-btn" id="menuToggle" aria-label="Abrir menú" onclick="toggleMobileMenu()">
+        ☰
+      </button>
+      <nav id="mainNav">
         <ul>
-          <li><a href="#presentacion">Presentación</a></li>
-          <li><a href="#tema4">Tema 4</a></li>
-          <li><a href="#caso4">Caso T4</a></li>
-          <li><a href="#quiz4">Quiz T4</a></li>
-          <li><a href="#tema5">Tema 5</a></li>
-          <li><a href="#caso5">Caso T5</a></li>
-          <li><a href="#quiz5">Quiz T5</a></li>
-          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#presentacion" onclick="closeMobileMenu()">Presentación</a></li>
+          <li><a href="#tema4" onclick="closeMobileMenu()">Tema 4</a></li>
+          <li><a href="#caso4" onclick="closeMobileMenu()">Caso T4</a></li>
+          <li><a href="#quiz4" onclick="closeMobileMenu()">Quiz T4</a></li>
+          <li><a href="#tema5" onclick="closeMobileMenu()">Tema 5</a></li>
+          <li><a href="#caso5" onclick="closeMobileMenu()">Caso T5</a></li>
+          <li><a href="#quiz5" onclick="closeMobileMenu()">Quiz T5</a></li>
+          <li><a href="#recursos" onclick="closeMobileMenu()">Recursos</a></li>
         </ul>
       </nav>
     </div>
@@ -1154,6 +1207,22 @@
       const submitBtn = form.querySelector(".submit-quiz-btn");
       submitBtn.disabled = true;
       submitBtn.textContent = "Evaluación Calificada";
+    }
+// Control del menú responsivo para teléfonos móviles
+    function toggleMobileMenu() {
+      const nav = document.getElementById("mainNav");
+      const btn = document.getElementById("menuToggle");
+      const isActive = nav.classList.toggle("menu-active");
+      btn.textContent = isActive ? "✕" : "☰";
+    }
+
+    function closeMobileMenu() {
+      const nav = document.getElementById("mainNav");
+      const btn = document.getElementById("menuToggle");
+      if (window.innerWidth <= 768) {
+        nav.classList.remove("menu-active");
+        btn.textContent = "☰";
+      }
     }
   </script>
 </body>
