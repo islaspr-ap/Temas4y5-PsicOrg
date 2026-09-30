@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posgrado en Psicología Organizacional | Unidades 4 y 5</title>
+  <style>
+    /* ==========================================================================
+       VARIABLES Y PALETA DE COLOR (ERGONOMÍA NOCTURNA)
+       ========================================================================== */
+    :root {
+      --bg-main: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-surface-elevated: #334155;
+      --border-subtle: #475569;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-t4: #38bdf8;
+      --accent-t4-subtle: rgba(56, 189, 248, 0.12);
+      --accent-t5: #fbbf24;
+      --accent-t5-subtle: rgba(251, 191, 36, 0.12);
+      --state-success: #34d399;
+      --state-success-bg: rgba(52, 211, 153, 0.15);
+      --state-error: #f87171;
+      --state-error-bg: rgba(248, 113, 113, 0.15);
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --transition-standard: all 0.25s ease-in-out;
+    }
+
+    /* ==========================================================================
+       RESET Y TIPOGRAFÍA BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       BARRA DE NAVEGACIÓN FIJA
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-surface-elevated);
+      color: var(--accent-t4);
+      border: 1px solid var(--border-subtle);
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.4rem 0.7rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-standard);
+    }
+
+    nav a:hover, nav a:focus {
+      color: var(--text-main);
+      background-color: var(--bg-surface-elevated);
+    }
+
+    /* ==========================================================================
+       ESTRUCTURA DE CONTENEDORES Y SECCIONES
+       ========================================================================== */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    section {
+      scroll-margin-top: 5rem;
+    }
+
+    .card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .t4-accent { color: var(--accent-t4); }
+    .t5-accent { color: var(--accent-t5); }
+
+    .lead-text {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ==========================================================================
+       TABLAS Y MATRICES COMPARATIVAS (RESPONSIVE)
+       ========================================================================== */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+    }
+
+    th {
+      background-color: var(--bg-surface-elevated);
+      color: var(--text-main);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    /* ==========================================================================
+       CASOS ORGANIZACIONALES Y SOLUCIONARIOS INTERACTIVOS
+       ========================================================================== */
+    .case-container {
+      border-left: 4px solid;
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-color: var(--border-subtle);
+    }
+
+    .case-t4 { border-left-color: var(--accent-t4); }
+    .case-t5 { border-left-color: var(--accent-t5); }
+
+    .case-narrative {
+      background-color: rgba(15, 23, 42, 0.6);
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      margin: 1.25rem 0;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.98rem;
+    }
+
+    .case-questions {
+      margin: 1.5rem 0;
+    }
+
+    .case-questions ol {
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .toggle-solution-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--bg-surface-elevated);
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      padding: 0.7rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition-standard);
+    }
+
+    .toggle-solution-btn:hover {
+      background-color: var(--border-subtle);
+    }
+
+    .solution-panel {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background-color: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .solution-panel.visible {
+      display: block;
+    }
+
+    .solution-panel h4 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+    }
+
+    .checklist-icon {
+      color: var(--state-success);
+      font-weight: bold;
+    }
+
+    /* ==========================================================================
+       QUIZZES Y AUTOEVALUACIÓN FORMATIVA
+       ========================================================================== */
+    .quiz-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+    }
+
+    .score-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--bg-surface-elevated);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .question-block {
+      background-color: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .options-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: var(--transition-standard);
+    }
+
+    .option-label:hover {
+      background-color: var(--bg-surface-elevated);
+    }
+
+    .option-label input[type="radio"] {
+      margin-right: 0.85rem;
+      accent-color: var(--accent-t4);
+    }
+
+    .option-label.correct {
+      border-color: var(--state-success);
+      background-color: var(--state-success-bg);
+      color: #a7f3d0;
+    }
+
+    .option-label.incorrect {
+      border-color: var(--state-error);
+      background-color: var(--state-error-bg);
+      color: #fecaca;
+    }
+
+    .feedback-panel {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .feedback-panel.visible {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .feedback-panel.success {
+      background-color: var(--state-success-bg);
+      border: 1px solid var(--state-success);
+      color: #d1fae5;
+    }
+
+    .feedback-panel.error {
+      background-color: var(--state-error-bg);
+      border: 1px solid var(--state-error);
+      color: #fee2e2;
+    }
+
+    .submit-quiz-btn {
+      background-color: var(--accent-t4);
+      color: #0f172a;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-standard);
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .submit-quiz-btn.btn-t5 {
+      background-color: var(--accent-t5);
+    }
+
+    .submit-quiz-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .submit-quiz-btn:disabled {
+      background-color: var(--border-subtle);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      padding: 2.5rem 1.25rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* ==========================================================================
+       ANIMACIONES Y UTILIDADES
+       ========================================================================== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; align-items: flex-start; }
+      nav ul { flex-direction: column; width: 100%; gap: 0.25rem; }
+      nav a { display: block; width: 100%; }
+      .card { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRA DE NAVEGACIÓN PRINCIPAL
+       ========================================================================== -->
+  <header>
+    <div class="nav-container">
+      <div class="brand-title">
+        <span>Psicología Organizacional</span>
+        <span class="brand-badge">Posgrado</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#presentacion">Presentación</a></li>
+          <li><a href="#tema4">Tema 4</a></li>
+          <li><a href="#caso4">Caso T4</a></li>
+          <li><a href="#quiz4">Quiz T4</a></li>
+          <li><a href="#tema5">Tema 5</a></li>
+          <li><a href="#caso5">Caso T5</a></li>
+          <li><a href="#quiz5">Quiz T5</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       CONTENIDO PRINCIPAL
+       ========================================================================== -->
+  <main>
+
+    <!-- INTRODUCCIÓN -->
+    <section id="presentacion" class="card">
+      <div class="section-header">
+        <h2>Entorno de Regularización Intensiva: Unidades 4 y 5</h2>
+        <p class="lead-text">4º Cuatrimestre de Maestría | Formación Directiva y Toma de Decisiones en la PyME</p>
+      </div>
+      <p style="margin-bottom: 1rem;">
+        Bienvenido al entorno de regularización asincrónica de alto rendimiento. Este recurso ha sido diseñado considerando el rigor analítico exigido a nivel de posgrado y los horarios de estudio nocturnos de profesionales en activo.
+      </p>
+      <p>
+        El trayecto formativo aborda la salud ocupacional desde el modelado científico y el cumplimiento normativo en México (<strong>Unidad 4</strong>), y la arquitectura neurocognitiva del juicio gerencial bajo la economía conductual (<strong>Unidad 5</strong>). Cada unidad integra fundamentos canónicos, dilemas gerenciales aplicados y mecanismos de evaluación formativa inmediata.
+      </p>
+    </section>
+
+    <!-- ==========================================================================
+         UNIDAD 4: CONTENIDO TEÓRICO
+         ========================================================================== -->
+    <section id="tema4" class="card">
+      <div class="section-header">
+        <h2 class="t4-accent">Unidad 4: Factores de Riesgo Psicosocial, Salud Ocupacional y Marco Normativo</h2>
+        <p class="lead-text">Modelos empíricos, evaluación del desgaste profesional y auditoría formal de la NOM-035-STPS-2018.</p>
+      </div>
+
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">4.1. Modelo de Demandas-Recursos Laborales (JD-R Model - Bakker & Demerouti)</h3>
+      <p>
+        El modelo JD-R postula que todas las condiciones de un entorno laboral pueden clasificarse en <em>Demandas</em> o <em>Recursos</em>, activando dos procesos psicológicos concurrentes pero funcionalmente independientes:
+      </p>
+      
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Variable del Entorno</th>
+              <th>Proceso Psicológico Activado</th>
+              <th>Resultado Operativo en la PyME</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Demandas Laborales Crónicas</strong><br><small class="text-muted">Sobrecarga cuantitativa, ambigüedad de rol, extensión de jornadas y presión temporal.</small></td>
+              <td><strong>Proceso de Deterioro de la Salud:</strong><br>Drenaje progresivo de reservas biofisiológicas y agotamiento crónico no compensado.</td>
+              <td>Agotamiento extremo (<em>burnout</em>), ausentismo por enfermedad, errores de ensamble y rotación voluntaria disfuncional.</td>
+            </tr>
+            <tr>
+              <td><strong>Recursos Laborales Estructurados</strong><br><small class="text-muted">Autonomía operativa, claridad de metas, apoyo directivo y retroalimentación periódica.</small></td>
+              <td><strong>Proceso Motivacional:</strong><br>Satisfacción de necesidades psicológicas básicas y consolidación de la autoeficacia.</td>
+              <td>Alto compromiso laboral (<em>engagement</em>), proactividad, resiliencia operativa y retención de talento crítico.</td>
+            </tr>
+            <tr>
+              <td><strong>Interacción Dinámica</strong><br><small class="text-muted">Demandas Altas + Recursos Altos.</small></td>
+              <td><strong>Efecto Amortiguador (<em>Buffering Effect</em>):</strong><br>Los recursos absorben y neutralizan la tensión causada por la sobrecarga.</td>
+              <td>Desempeño bajo presión controlado, aprendizaje activo y preservación de la salud en picos estacionales.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">4.2. Diagnóstico y Dimensiones del Síndrome de Burnout (OMS CIE-11 / MBI)</h3>
+      <p>
+        Reconocido en la CIE-11 como un fenómeno estrictamente ocupacional atribuible a fallas en el diseño y la gestión del trabajo. Se audita mediante el <em>Maslach Burnout Inventory (MBI)</em>:
+      </p>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Dimensión MBI</th>
+              <th>Mecanismo Psicológico</th>
+              <th>Manifestación Observable</th>
+              <th>Costo Oculto de Negocio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Agotamiento Emocional</strong></td>
+              <td>Vaciado de reservas energéticas; fatiga extrema que no cede con el descanso habitual.</td>
+              <td>Llegadas tardías recurrentes, lentitud operativa y quejas incesantes de fatiga.</td>
+              <td>Desplome de productividad por hora-hombre y elevación del Factor de Bradford.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Despersonalización / Cinismo</strong></td>
+              <td>Mecanismo defensivo de distanciamiento psicológico frío y desapegado hacia otros.</td>
+              <td>Trato displicente a clientes o colegas e indiferencia ante la calidad del servicio.</td>
+              <td>Pérdida de cuentas estratégicas y deterioro de la reputación de marca.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Baja Realización Personal</strong></td>
+              <td>Erosión sistemática del sentido de autoeficacia y competencia laboral.</td>
+              <td>Rechazo a capacitaciones, conformismo pasivo y parálisis operativa.</td>
+              <td>Retrabajos críticos, bloqueo a la innovación y «renuncia psicológica».</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">4.3. Auditoría Técnica de la NOM-035-STPS-2018 y Jerarquía Preventiva</h3>
+      <p>
+        La superación del «cumplimiento en papel» exige clasificar las intervenciones según su nivel preventivo, priorizando siempre la modificación de las causas estructurales:
+      </p>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nivel de Intervención</th>
+              <th>Foco Operativo y Acciones Estratégicas</th>
+              <th>Retorno de Inversión (ROI) y Alcance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primaria (Organizacional)</strong></td>
+              <td><strong>Actúa sobre la causa raíz:</strong> Rediseño de puestos, balanceo de cargas de trabajo, eliminación de horas extra crónicas y formación directiva.</td>
+              <td><strong>Máximo ROI:</strong> Protege a toda la organización, reduce la rotación y garantiza cumplimiento ante la STPS.</td>
+            </tr>
+            <tr>
+              <td><strong>Secundaria (Individual-Grupal)</strong></td>
+              <td><strong>Actúa sobre la respuesta al estrés:</strong> Talleres de gestión del tiempo, afrontamiento cognitivo y protocolos de comunicación asertiva.</td>
+              <td><strong>ROI Moderado:</strong> Brinda herramientas al colaborador, pero es inútil si la sobrecarga y el maltrato estructural persisten.</td>
+            </tr>
+            <tr>
+              <td><strong>Terciaria (Clínica / Reactiva)</strong></td>
+              <td><strong>Actúa sobre el daño consumado:</strong> Canalización médica/psicológica por acontecimientos traumáticos severos o depresión aguda.</td>
+              <td><strong>Alto Costo / Paliativo:</strong> Indispensable por ética y ley, pero actúa cuando el daño y los costos ya ocurrieron.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CASO PRÁCTICO 4 -->
+    <section id="caso4" class="case-container case-t4">
+      <div class="section-header">
+        <h3 class="t4-accent">Caso Organizacional 1: Manufacturas del Golfo S.A. de C.V.</h3>
+        <p class="lead-text">Dilema gerencial: Gestión de sobrecarga en contratos de exportación Just-in-Time.</p>
+      </div>
+
+      <div class="case-narrative">
+        <strong>Contexto Operativo:</strong> Empresa manufacturera de autopartes con una plantilla de 85 colaboradores. Tras firmar un contrato de exportación bajo esquema <em>Just-in-Time</em>, la dirección general elevó el ritmo de producción un 35% sin contratar personal adicional.
+        <br><br>
+        <strong>Métricas a los 8 meses:</strong>
+        <ul style="padding-left: 1.25rem; margin-top: 0.5rem;">
+          <li>Horas extra obligatorias de 15 horas semanales acumuladas por operario.</li>
+          <li>Aumento del 42% en quejas de clientes por piezas defectuosas.</li>
+          <li>Factor de Bradford triplicado por ausencias cortas justificadas (gastritis, migrañas).</li>
+          <li>Rotación voluntaria del 28% en supervisores y operadores calificados.</li>
+        </ul>
+        <br>
+        <strong>Intervención Directiva Actual:</strong> El Director General afirma que el problema es una «falta de resiliencia y compromiso de la plantilla» y contrató a un coach externo para impartir un taller sabatino obligatorio de mindfulness y respiración diafragmática.
+      </div>
+
+      <div class="case-questions">
+        <h4 style="margin-bottom: 0.75rem;">Preguntas de Análisis Crítico para el Posgrado:</h4>
+        <ol>
+          <li>A partir del modelo JD-R, ¿qué proceso psicológico está activo y qué desequilibrio existe entre demandas y recursos?</li>
+          <li>Tomando las dimensiones del MBI de Maslach, identifique dos manifestaciones conductuales y analice su impacto financiero oculto.</li>
+          <li>¿En qué nivel de la jerarquía preventiva se ubica el taller de mindfulness y por qué resulta técnicamente inviable para contener la crisis?</li>
+          <li>Diseñe un plan de intervención de Nivel Primario conforme a las obligaciones de la NOM-035-STPS-2018 para centros con más de 50 empleados.</li>
+        </ol>
+      </div>
+
+      <button class="toggle-solution-btn" onclick="toggleSolution('sol-caso4')">
+        <span id="sol-caso4-icon">+</span> Ver Criterios Técnicos / Solucionario
+      </button>
+
+      <div id="sol-caso4" class="solution-panel">
+        <h4 class="t4-accent">Criterios de Evaluación y Solucionario Técnico</h4>
+        <ul class="checklist">
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Diagnóstico JD-R:</strong> El alumno debe identificar la activación del <em>Proceso de Deterioro de la Salud</em> derivado de demandas laborales crónicas no amortiguadas (sobrecarga cuantitativa, ritmo impuesto y jornadas excesivas) en ausencia de recursos laborales protectores.</div>
+          </li>
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Tipificación MBI:</strong> Debe vincular las incapacidades recurrentes con el <em>Agotamiento Emocional</em> y las fallas de calidad/quejas de clientes con el <em>Cinismo/Despersonalización</em> y la consecuente <em>Baja Realización Personal</em>. Costo oculto: Scrap de piezas defectuosas y penalizaciones por incumplimiento <em>Just-in-Time</em>.</div>
+          </li>
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Auditoría de Nivel:</strong> Debe clasificar el taller como <em>Intervención Secundaria</em>. Resulta inútil porque entrena al individuo para resistir la tensión pero deja intacta la causa generadora (las 15 horas extra y la falta de capacidad técnica instalada).</div>
+          </li>
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Plan Primario (NOM-035):</strong> Obligación de aplicar la Guía de Referencia III (más de 50 colaboradores). Acciones obligadas: Rebalanceo formal de turnos de ensamble, contratación de una cuadrilla de relevo, rediseño de descriptores de puesto y eliminación técnica de las jornadas prolongadas.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- AUTOEVALUACIÓN 4 -->
+    <section id="quiz4" class="quiz-card">
+      <div class="section-header">
+        <h3 class="t4-accent">Autoevaluación Formativa: Unidad 4</h3>
+        <p class="lead-text">Reactivos de opción múltiple con retroalimentación conceptual inmediata.</p>
+      </div>
+
+      <div class="score-banner">
+        <span>Progreso de Evaluación</span>
+        <span id="score-display-4">Calificación: Sin evaluar</span>
+      </div>
+
+      <form id="form-quiz-4">
+        <!-- Pregunta 1 -->
+        <div class="question-block" data-qid="q4_1" data-correct="C">
+          <p class="question-text">1. En una empresa de servicios sujeta a un alza estacional del 50% en llamadas, la dirección confiere autonomía operativa a los analistas para definir soluciones y refuerza la retroalimentación positiva. Pese al volumen, los colaboradores mantienen el desempeño sin agotamiento. Según Bakker y Demerouti, esto se debe a:</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q4_1" value="A"> A) Supresión cognitiva del estresor ambiental.</label>
+            <label class="option-label"><input type="radio" name="q4_1" value="B"> B) Activación del proceso primario de deterioro fisiológico.</label>
+            <label class="option-label"><input type="radio" name="q4_1" value="C"> C) Efecto amortiguador (buffering effect) de los recursos laborales.</label>
+            <label class="option-label"><input type="radio" name="q4_1" value="D"> D) Homeostasis adaptativa por acomodación defensiva.</label>
+          </div>
+          <div class="feedback-panel" id="fb-q4_1"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question-block" data-qid="q4_2" data-correct="B">
+          <p class="question-text">2. Un jefe de compras muestra una actitud recurrente de frialdad, sarcasmo y distanciamiento hacia los proveedores estratégicos, manifestando que «le da igual si entregan a tiempo, total la empresa no reconoce el esfuerzo». Conforme al MBI de Christina Maslach, ¿qué dimensión se manifiesta?</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q4_2" value="A"> A) Agotamiento emocional nuclear.</label>
+            <label class="option-label"><input type="radio" name="q4_2" value="B"> B) Despersonalización / Cinismo como mecanismo defensivo.</label>
+            <label class="option-label"><input type="radio" name="q4_2" value="C"> C) Pérdida transitoria de la memoria operativa de trabajo.</label>
+            <label class="option-label"><input type="radio" name="q4_2" value="D"> D) Hostigamiento laboral activo (mobbing).</label>
+          </div>
+          <div class="feedback-panel" id="fb-q4_2"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question-block" data-qid="q4_3" data-correct="B">
+          <p class="question-text">3. Tras una inspección de la STPS, una planta manufacturera reporta nivel de riesgo «Muy Alto» en la dimensión de Cargas de Trabajo. La gerencia decide implementar exclusivamente sesiones quincenales de masajes antiestrés de 15 minutos. Desde la salud ocupacional, esta estrategia es:</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q4_3" value="A"> A) Una intervención primaria óptima con retorno de inversión máximo.</label>
+            <label class="option-label"><input type="radio" name="q4_3" value="B"> B) Una intervención secundaria que resulta inútil si persiste la sobrecarga estructural.</label>
+            <label class="option-label"><input type="radio" name="q4_3" value="C"> C) Una intervención terciaria sustitutiva de canalización clínica.</label>
+            <label class="option-label"><input type="radio" name="q4_3" value="D"> D) Una medida plenamente satisfactoria conforme al marco punitivo de la NOM-035.</label>
+          </div>
+          <div class="feedback-panel" id="fb-q4_3"></div>
+        </div>
+
+        <button type="button" class="submit-quiz-btn" onclick="gradeQuiz('form-quiz-4', 'score-display-4', explanationsT4)">
+          Calificar Evaluación de Unidad 4
+        </button>
+      </form>
+    </section>
+
+    <!-- ==========================================================================
+         UNIDAD 5: CONTENIDO TEÓRICO
+         ========================================================================== -->
+    <section id="tema5" class="card">
+      <div class="section-header">
+        <h2 class="t5-accent">Unidad 5: Psicología de la Decisión Directiva y Economía Conductual</h2>
+        <p class="lead-text">Racionalidad limitada, sesgos del juicio corporativo, patologías grupales y diseño de empujones (nudges).</p>
+      </div>
+
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">5.1. Racionalidad Limitada en la Alta Dirección (Herbert Simon)</h3>
+      <p>
+        Frente al mito clásico del <em>Homo economicus</em> omnisciente, Simon demostró que los comités directivos reales operan bajo severas restricciones biofisiológicas e informáticas, rigiéndose por el principio de satisfacción:
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Variable Decisional</th>
+              <th>Modelo Clásico Normativo</th>
+              <th>Racionalidad Limitada (Herbert Simon)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Disponibilidad de Datos</strong></td>
+              <td>Información completa, simétrica, gratuita y certidumbre futura absoluta.</td>
+              <td>Incompleta, asimétrica, costosa de adquirir y sujeta a incertidumbre intrínseca.</td>
+            </tr>
+            <tr>
+              <td><strong>Capacidad de Procesamiento</strong></td>
+              <td>Ilimitada; procesamiento algorítmico exhaustivo de probabilidades e impactos.</td>
+              <td>Restricciones neurobiológicas severas en memoria de trabajo y foco atencional.</td>
+            </tr>
+            <tr>
+              <td><strong>Criterio de Elección</strong></td>
+              <td><strong>Maximización / Optimización:</strong> Elección de la mejor alternativa matemática.</td>
+              <td><strong>Principio de Satisfacción (Satisficing):</strong> Se adopta la primera opción que supera el umbral mínimo aceptable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">5.2. Heurísticas y Sesgos Cognitivos Directivos (Kahneman & Tversky)</h3>
+      <p>
+        El Sistema 1 (rápido, asociativo y de bajo consumo) domina la mayor parte de las deliberaciones. Cuando sus atajos mentales guían decisiones estratégicas complejas sin filtro del Sistema 2, surgen sesgos sistemáticos:
+      </p>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Sesgo Cognitivo</th>
+              <th>Mecanismo Psicológico</th>
+              <th>Manifestación en la PyME</th>
+              <th>Protocolo de Mitigación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Aversión a la Pérdida</strong></td>
+              <td>El dolor psicológico de una pérdida equivale al doble del placer de una ganancia similar.</td>
+              <td>Negativa a cancelar proyectos fallidos por apego al capital invertido (costo hundido).</td>
+              <td><strong>Criterios Stop-Loss:</strong> Definir límites contractuales máximos de pérdida tolerada antes de iniciar.</td>
+            </tr>
+            <tr>
+              <td><strong>Sesgo de Confirmación</strong></td>
+              <td>Filtrar y valorar selectivamente solo la información que valida hipótesis previas.</td>
+              <td>Desestimar quejas de clientes o reportes de pérdidas presentados por auditoría.</td>
+              <td><strong>Red Team:</strong> Asignación formal de un directivo encargado de refutar la propuesta dominante.</td>
+            </tr>
+            <tr>
+              <td><strong>Exceso de Confianza</strong></td>
+              <td>Sobreestimación de las propias capacidades predictivas y control del entorno.</td>
+              <td>Proyecciones de ventas irreales y subestimación severa de plazos de ejecución.</td>
+              <td><strong>Técnica Pre-Mortem:</strong> Asumir que el proyecto fracasó catastróficamente y auditar las causas.</td>
+            </tr>
+            <tr>
+              <td><strong>Sesgo de Anclaje</strong></td>
+              <td>Fijación desproporcionada en el primer dato o número introducido en la deliberación.</td>
+              <td>Presupuestos anuales determinados pasivamente por el gasto del año precedente.</td>
+              <td><strong>Votación Ciega:</strong> Estimaciones independientes remitidas por escrito antes de debatir en pleno.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">5.3. Pensamiento de Grupo (Groupthink) y Choice Architecture</h3>
+      <p>
+        Irving Janis tipificó cómo el deseo de armonía o la sumisión ante un fundador anulan el juicio crítico corporativo. Para corregir estas desviaciones de forma económica y ética, la Arquitectura de Decisiones (Thaler & Sunstein) propone palancas conductuales sin recurrir a prohibiciones punitivas:
+      </p>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Palanca de Nudge</th>
+              <th>Mecanismo Psicológico</th>
+              <th>Aplicación Estratégica en la PyME</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Opciones Predeterminadas</strong></td>
+              <td>Sesgo del <em>statu quo</em> e inercia cognitiva: se tiende a mantener la opción fijada por defecto.</td>
+              <td>Inscripción por defecto en esquemas de ahorro o protocolos automatizados de doble firma.</td>
+            </tr>
+            <tr>
+              <td><strong>Ingeniería de Fricción</strong></td>
+              <td>Facilitar pasos para conductas deseables y elevar barreras para hábitos de riesgo o derroche.</td>
+              <td>Reportes de fallas en 1 clic; exigencia de justificación técnica y doble aval para autorizar horas extra.</td>
+            </tr>
+            <tr>
+              <td><strong>Prueba Social / Visibilidad</strong></td>
+              <td>Búsqueda de conformidad normativa mediante la observación del estándar de pares.</td>
+              <td>Tableros públicos de desempeño operativo, seguridad y cumplimiento ético en tiempo real.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CASO PRÁCTICO 5 -->
+    <section id="caso5" class="case-container case-t5">
+      <div class="section-header">
+        <h3 class="t5-accent">Caso Organizacional 2: Logística y Distribución Peninsular S.A.</h3>
+        <p class="lead-text">Dilema gerencial: Aprobación de gasto de capital tecnológico en un comité centralizado.</p>
+      </div>
+
+      <div class="case-narrative">
+        <strong>Contexto Operativo:</strong> Empresa logística regional con 12 almacenes. El Director General y accionista mayoritario reúne al comité directivo para aprobar la compra e implementación de un ERP de origen alemán cotizado en $3.5 millones de pesos (que compromete el 45% del flujo de caja anual).
+        <br><br>
+        <strong>Dinámica de la Sesión Directiva:</strong>
+        <p style="margin-top: 0.5rem; font-style: italic;">
+          «Este sistema nos convertirá en el referente logístico regional en exactamente 90 días; he revisado la propuesta del proveedor y es una oportunidad única que no podemos dudar en firmar», afirmó con vehemencia el Director General al arrancar la sesión.
+        </p>
+        <br>
+        <strong>Eventos Observados en la Reunión:</strong>
+        <ul style="padding-left: 1.25rem; margin-top: 0.5rem;">
+          <li>Dos gerentes de operaciones sabían de antemano que la infraestructura de internet en sus bodegas rurales no cumple con los requerimientos técnicos del software, pero optaron por guardar silencio para no generar fricción con el fundador.</li>
+          <li>El Director Financiero tomó la palabra con un análisis técnico que demostraba la asfixia de liquidez resultante. El Asistente de Dirección lo interrumpió de inmediato: <em>«No desanimemos a la dirección con tecnicismos contables en un momento estratégico»</em>.</li>
+          <li>La propuesta se aprobó por unanimidad en menos de 25 minutos de sesión.</li>
+        </ul>
+      </div>
+
+      <div class="case-questions">
+        <h4 style="margin-bottom: 0.75rem;">Preguntas de Análisis Crítico para el Posgrado:</h4>
+        <ol>
+          <li>Identifique y justifique teóricamente al menos dos sesgos cognitivos individuales (Kahneman & Tversky) observables en el discurso del Director General.</li>
+          <li>¿Qué síntomas de Pensamiento de Grupo (<em>Groupthink</em> de Janis) se configuraron de manera explícita en el comportamiento del comité y del asistente?</li>
+          <li>Explique cómo el principio de racionalidad limitada (Simon) desaconsejaba resolver este dilema de esa forma y formule dos contramedidas institucionales.</li>
+          <li>Diseñe una propuesta de <em>Choice Architecture</em> (ingeniería de fricción u opciones predeterminadas) para regular las autorizaciones de inversión de capital crítico en la PyME.</li>
+        </ol>
+      </div>
+
+      <button class="toggle-solution-btn" onclick="toggleSolution('sol-caso5')">
+        <span id="sol-caso5-icon">+</span> Ver Criterios Técnicos / Solucionario
+      </button>
+
+      <div id="sol-caso5" class="solution-panel">
+        <h4 class="t5-accent">Criterios de Evaluación y Solucionario Técnico</h4>
+        <ul class="checklist">
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Detección de Sesgos Directivos:</strong> Identificación precisa de <em>Exceso de Confianza</em> (plazo de implementación irreal de 90 días y supuesta invulnerabilidad competitiva) y <em>Sesgo de Anclaje</em> (fijación acrítica en la cifra y promesas del proveedor).</div>
+          </li>
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Síntomas de Groupthink:</strong> Detección de la <em>Autocensura Premeditada</em> de los dos gerentes operativos que callaron las deficiencias técnicas de conectividad, y del rol explícito de <em>Guardián de la Mente (Mindguard)</em> asumido por el Asistente de Dirección al censurar el reporte financiero.</div>
+          </li>
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Contramedidas Basadas en Evidencia:</strong> Demostrar que operaron bajo <em>Satisficing</em> degradado. Propuesta de intervención: Implementación obligatoria de la técnica <em>Pre-Mortem</em> de Gary Klein y designación formal de un <em>Red Team</em> para auditar la viabilidad de la inversión.</div>
+          </li>
+          <li class="checklist-item">
+            <span class="checklist-icon">✔</span>
+            <div><strong>Arquitectura Decisional:</strong> Diseño de <em>Ingeniería de Fricción</em> que exija un dictamen independiente de viabilidad técnica y corrida financiera de estrés previo al orden del día, o sistema de votación anónima por escrito antes del debate deliberativo.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- AUTOEVALUACIÓN 5 -->
+    <section id="quiz5" class="quiz-card">
+      <div class="section-header">
+        <h3 class="t5-accent">Autoevaluación Formativa: Unidad 5</h3>
+        <p class="lead-text">Reactivos de opción múltiple con retroalimentación conceptual inmediata.</p>
+      </div>
+
+      <div class="score-banner">
+        <span>Progreso de Evaluación</span>
+        <span id="score-display-5">Calificación: Sin evaluar</span>
+      </div>
+
+      <form id="form-quiz-5">
+        <!-- Pregunta 1 -->
+        <div class="question-block" data-qid="q5_1" data-correct="B">
+          <p class="question-text">1. ¿Cuál de los siguientes postulados sintetiza rigurosamente el concepto de Racionalidad Limitada propuesto por Herbert Simon en contraposición a la teoría económica clásica?</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q5_1" value="A"> A) Los directivos buscan y analizan toda la información del mercado antes de seleccionar la alternativa óptima.</label>
+            <label class="option-label"><input type="radio" name="q5_1" value="B"> B) Las decisiones se guían por el principio de satisfacción al elegir la primera opción que rebasa el umbral mínimo aceptable.</label>
+            <label class="option-label"><input type="radio" name="q5_1" value="C"> C) Las elecciones gerenciales están completamente dominadas por el azar y escapan a cualquier estructuración lógica.</label>
+            <label class="option-label"><input type="radio" name="q5_1" value="D"> D) El tomador de decisiones posee una memoria de trabajo ilimitada para estimar probabilidades compuestas.</label>
+          </div>
+          <div class="feedback-panel" id="fb-q5_1"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question-block" data-qid="q5_2" data-correct="B">
+          <p class="question-text">2. Un consejo de administración rechaza vender una línea de negocio crónicamente deficitaria argumentando que «sería inaceptable desperdiciar los $10 millones ya inyectados en maquinaria». ¿Qué sesgo y mecanismo conductual predominan?</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q5_2" value="A"> A) Sesgo de anclaje vinculado a proyecciones futuras.</label>
+            <label class="option-label"><input type="radio" name="q5_2" value="B"> B) Aversión a la pérdida y falacia del costo hundido.</label>
+            <label class="option-label"><input type="radio" name="q5_2" value="C"> C) Exceso de confianza en las habilidades de planeación.</label>
+            <label class="option-label"><input type="radio" name="q5_2" value="D"> D) Despersonalización directiva racionalizada.</label>
+          </div>
+          <div class="feedback-panel" id="fb-q5_2"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question-block" data-qid="q5_3" data-correct="C">
+          <p class="question-text">3. Durante una sesión de planeación estratégica, un gerente calla sus advertencias técnicas para no perturbar la aparente unanimidad ni contrariar el optimismo del Director. Según Irving Janis, se verifica:</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q5_3" value="A"> A) Ilusión de invulnerabilidad compartida.</label>
+            <label class="option-label"><input type="radio" name="q5_3" value="B"> B) Comportamiento de guardián de la mente (mindguard).</label>
+            <label class="option-label"><input type="radio" name="q5_3" value="C"> C) Autocensura premeditada.</label>
+            <label class="option-label"><input type="radio" name="q5_3" value="D"> D) Heurística de representatividad adaptativa.</label>
+          </div>
+          <div class="feedback-panel" id="fb-q5_3"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question-block" data-qid="q5_4" data-correct="B">
+          <p class="question-text">4. Para erradicar horas extra injustificadas sin recurrir a prohibiciones tajantes, la dirección establece que cada solicitud debe justificar por escrito el impacto, presentar un análisis de carga y requerir la firma de dos gerentes. Esta técnica de Nudge corresponde a:</p>
+          <div class="options-group">
+            <label class="option-label"><input type="radio" name="q5_4" value="A"> A) Activación pasiva del sesgo del statu quo.</label>
+            <label class="option-label"><input type="radio" name="q5_4" value="B"> B) Regulación de la fricción operativa (friction engineering).</label>
+            <label class="option-label"><input type="radio" name="q5_4" value="C"> C) Difusión pública de prueba social.</label>
+            <label class="option-label"><input type="radio" name="q5_4" value="D"> D) Protocolo deliberativo Pre-Mortem.</label>
+          </div>
+          <div class="feedback-panel" id="fb-q5_4"></div>
+        </div>
+
+        <button type="button" class="submit-quiz-btn btn-t5" onclick="gradeQuiz('form-quiz-5', 'score-display-5', explanationsT5)">
+          Calificar Evaluación de Unidad 5
+        </button>
+      </form>
+    </section>
+
+    <!-- RECURSOS -->
+    <section id="recursos" class="card">
+      <div class="section-header">
+        <h2>Recursos Canónicos y Marco de Consulta</h2>
+        <p class="lead-text">Literatura base y normatividad oficial para profundizar en las unidades.</p>
+      </div>
+      <ul style="padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem;">
+        <li><strong>Bakker, A. B., & Demerouti, E. (2007):</strong> The Job Demands-Resources model: state of the art. <em>Journal of Managerial Psychology</em>.</li>
+        <li><strong>Maslach, C., & Jackson, S. E. (1981):</strong> The measurement of experienced burnout. <em>Journal of Organizational Behavior</em>.</li>
+        <li><strong>Secretaría del Trabajo y Previsión Social (2018):</strong> <em>Norma Oficial Mexicana NOM-035-STPS-2018</em>, Factores de riesgo psicosocial en el trabajo-Identificación, análisis y prevención. Diario Oficial de la Federación.</li>
+        <li><strong>Simon, H. A. (1979):</strong> Rational decision-making in business organizations. <em>The American Economic Review</em>.</li>
+        <li><strong>Kahneman, D. (2011):</strong> <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux.</li>
+        <li><strong>Janis, I. L. (1982):</strong> <em>Groupthink: Psychological Studies of Policy Decisions and Fiascoes</em>. Houghton Mifflin.</li>
+        <li><strong>Thaler, R. H., & Sunstein, C. R. (2008):</strong> <em>Nudge: Improving Decisions About Health, Wealth, and Happiness</em>. Yale University Press.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       PIE DE PÁGINA
+       ========================================================================== -->
+  <footer>
+    <div class="footer-content">
+      <p>Entorno Virtual de Aprendizaje | Maestría en Psicología Organizacional</p>
+      <p>Material estructurado bajo estándares andragógicos para regularización académica intensiva.</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       LÓGICA JAVASCRIPT NATIVO
+       ========================================================================== -->
+  <script>
+    // Retroalimentaciones pedagógicas detalladas para la Unidad 4
+    const explanationsT4 = {
+      q4_1: {
+        correct: "C",
+        text: "Correcto. El modelo JD-R demuestra empíricamente que los recursos laborales estructurados (autonomía y retroalimentación) operan como amortiguadores que neutralizan los efectos patógenos de las altas demandas laborales temporales.",
+        incA: "Incorrecto. La supresión es un mecanismo individual de defensa desadaptativo, no el principio de interacción del modelo JD-R.",
+        incB: "Incorrecto. El deterioro de la salud ocurre cuando las demandas crónicas carecen de recursos suficientes de compensación.",
+        incD: "Incorrecto. Concepto biológico general no aplicable a la arquitectura dual de Bakker y Demerouti."
+      },
+      q4_2: {
+        correct: "B",
+        text: "Correcto. La despersonalización o cinismo constituye una coraza defensiva donde el colaborador despliega una actitud distante, hostil e insensible hacia el entorno ante el agotamiento crónico.",
+        incA: "Incorrecto. El agotamiento emocional se expresa prioritariamente como fatiga extrema y vaciado de recursos bioenergéticos.",
+        incC: "Incorrecto. Es una alteración cognitiva accesoria, no una de las 3 dimensiones diagnósticas del MBI.",
+        incD: "Incorrecto. El acoso laboral (mobbing) implica conductas hostiles deliberadas y sistemáticas hacia un individuo en el trabajo."
+      },
+      q4_3: {
+        correct: "B",
+        text: "Correcto. Los talleres de relajación o masajes son intervenciones secundarias (individuales); no resuelven la causa raíz del problema (sobrecarga cuantitativa estructural), desperdiciando recursos financieros.",
+        incA: "Incorrecto. La intervención primaria exige el rediseño estructural del puesto y la redistribución de cargas de trabajo.",
+        incC: "Incorrecto. La intervención terciaria implica tratamiento médico y psicológico especializado ante un daño ya consumado.",
+        incD: "Incorrecto. La NOM-035 exige implementar planes de acción sobre la organización del trabajo en niveles de riesgo alto o muy alto."
+      }
+    };
+
+    // Retroalimentaciones pedagógicas detalladas para la Unidad 5
+    const explanationsT5 = {
+      q5_1: {
+        correct: "B",
+        text: "Correcto. Herbert Simon demostró que los directivos operan bajo 'satisficing': detienen la búsqueda de alternativas cuando encuentran la primera opción que satisface su umbral mínimo aceptable, dada la finitud de tiempo y capacidad cognitiva.",
+        incA: "Incorrecto. Corresponde al modelo normativo del Homo economicus, refutado por la teoría de la racionalidad limitada.",
+        incC: "Incorrecto. Simon no descarta el análisis racional; establece que opera constreñido por límites cognitivos e informativos.",
+        incD: "Incorrecto. El cerebro humano posee limitaciones severas en memoria de trabajo y procesamiento probabilístico."
+      },
+      q5_2: {
+        correct: "B",
+        text: "Correcto. La aversión a la pérdida y la falacia del costo hundido generan un apego desmedido al capital ya erogado e irrecuperable, impidiendo cortar pérdidas operativas a tiempo.",
+        incA: "Incorrecto. El anclaje se produce al fijarse de forma rígida en la primera cifra numérica aportada en una deliberación.",
+        incC: "Incorrecto. El exceso de confianza sobreestima capacidades predictivas o de control, pero aquí el motor es el apego al dinero ya perdido.",
+        incD: "Incorrecto. Es un concepto de salud ocupacional (burnout), no un sesgo decisional de Kahneman y Tversky."
+      },
+      q5_3: {
+        correct: "C",
+        text: "Correcto. La autocensura premeditada ocurre cuando los integrantes del grupo reprimen deliberadamente sus dudas técnicas para evitar la confrontación o preservar la armonía ficticia del equipo.",
+        incA: "Incorrecto. La ilusión de invulnerabilidad es la creencia colectiva desmedida de que la organización no puede fallar.",
+        incB: "Incorrecto. El guardián de la mente (mindguard) actúa como filtro activo aislando al líder de información técnica discordante.",
+        incD: "Incorrecto. La representatividad es una heurística individual de juicio probabilístico, no una patología colectiva de Janis."
+      },
+      q5_4: {
+        correct: "B",
+        text: "Correcto. La ingeniería de fricción introduce deliberadamente pasos burocráticos y esfuerzo cognitivo/físico para desincentivar una conducta costosa sin llegar a prohibirla formalmente.",
+        incA: "Incorrecto. El sesgo del statu quo opera a través de opciones fijadas por defecto (defaults).",
+        incC: "Incorrecto. La prueba social se fundamenta en la observación pública y transparente del comportamiento de pares.",
+        incD: "Incorrecto. El Pre-Mortem es una técnica para anticipar riesgos de proyectos antes de autorizarlos."
+      }
+    };
+
+    // Función para desplegar u ocultar los criterios técnicos de los casos
+    function toggleSolution(panelId) {
+      const panel = document.getElementById(panelId);
+      const icon = document.getElementById(panelId + "-icon");
+      if (panel.classList.contains("visible")) {
+        panel.classList.remove("visible");
+        icon.textContent = "+";
+      } else {
+        panel.classList.add("visible");
+        icon.textContent = "−";
+      }
+    }
+
+    // Función para calificar los quizzes con retroalimentación formativa inmediata
+    function gradeQuiz(formId, scoreDisplayId, explanations) {
+      const form = document.getElementById(formId);
+      const blocks = form.querySelectorAll(".question-block");
+      let totalQuestions = blocks.length;
+      let correctAnswers = 0;
+      let allAnswered = true;
+
+      // Validación de respuesta previa
+      blocks.forEach(block => {
+        const qid = block.getAttribute("data-qid");
+        const selected = form.querySelector(`input[name="${qid}"]:checked`);
+        if (!selected) {
+          allAnswered = false;
+        }
+      });
+
+      if (!allAnswered) {
+        alert("Por favor, responda todos los reactivos de la evaluación antes de calificar.");
+        return;
+      }
+
+      // Procesamiento de respuestas
+      blocks.forEach(block => {
+        const qid = block.getAttribute("data-qid");
+        const correctVal = block.getAttribute("data-correct");
+        const selectedOption = form.querySelector(`input[name="${qid}"]:checked`);
+        const feedbackPanel = document.getElementById(`fb-${qid}`);
+        const labels = block.querySelectorAll(".option-label");
+        const expData = explanations[qid];
+
+        // Bloquear opciones para evitar cambios tras calificar
+        block.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = true);
+
+        labels.forEach(lbl => {
+          const input = lbl.querySelector('input[type="radio"]');
+          if (input.value === correctVal) {
+            lbl.classList.add("correct");
+          } else if (input.checked && input.value !== correctVal) {
+            lbl.classList.add("incorrect");
+          }
+        });
+
+        feedbackPanel.classList.add("visible");
+
+        if (selectedOption.value === correctVal) {
+          correctAnswers++;
+          feedbackPanel.className = "feedback-panel visible success";
+          feedbackPanel.innerHTML = `<strong>Respuesta Correcta:</strong> ${expData.text}`;
+        } else {
+          feedbackPanel.className = "feedback-panel visible error";
+          const incorrectKey = "inc" + selectedOption.value;
+          const specificInc = expData[incorrectKey] || "Opción no fundamentada.";
+          feedbackPanel.innerHTML = `<strong>Respuesta Incorrecta:</strong> ${specificInc}<br><br><strong>Fundamento de la opción correcta (${correctVal}):</strong> ${expData.text}`;
+        }
+      });
+
+      // Cálculo de nota sobre base 100
+      const score = Math.round((correctAnswers / totalQuestions) * 100);
+      const scoreElement = document.getElementById(scoreDisplayId);
+      scoreElement.innerHTML = `Resultado: <span style="color: ${score >= 80 ? 'var(--state-success)' : 'var(--state-error)'};">${score} / 100</span> (${correctAnswers} de ${totalQuestions} aciertos)`;
+
+      // Deshabilitar botón de envío
+      const submitBtn = form.querySelector(".submit-quiz-btn");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Evaluación Calificada";
+    }
+  </script>
+</body>
+</html>
